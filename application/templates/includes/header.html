@@ -1,0 +1,36 @@
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-14">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="#" class="logo">
+                            In The Memory <br>
+                            Of Our Loved Ones
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{{ url_for('index') }}" class={% if index %}active{% endif %}>Home</a></li>
+                            <li><a href="">Schedule Gifts</a></li>
+                            <li><a href="{{ url_for('recorder') }}">Record Message</a></li>
+                            <li><a href="#testimonials">Create your Clone</a></li>
+                            <li><a href="#pricing-plans">Letters & Secrets</a></li>
+                            <li><a href="{{ url_for('relation')}}">My Loved Ones</a></li>
+                            {%  if login %}
+                            <li><a href="{{url_for('logout')}}">Logout</a></li>
+                            {%  else %}
+                            <li><a href="{{ url_for('login') }}" class="{% if login %}active{% endif %}">Log In</a></li>
+                            {%  endif %}
+
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>

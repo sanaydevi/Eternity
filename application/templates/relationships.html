@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{%block content %}
+{%  if login %}
+    <div class="welcome-area" id="welcome">
+        <div class="card-content" id="card-show">
+                <button class="addbtn" style="text-align: center " onclick="openForm()">+</button>
+                <br><br>
+{#          <div class="column">#}
+              {% for class in classes %}
+              <div class="card">
+              <h3>{{ class.r1["name"] }}</h3>
+              <p>{{ class.r1["email"] }}</p>
+              <p>{{ class.r1["phone_number"] }}</p>
+            </div>
+              {% endfor %}
+          </div>
+        </div>
+
+{#    <table class="table table-hover">#}
+{#                    <thead>#}
+{#                    <tr>#}
+{#                        <th scope="col">Name</th>#}
+{#                        <th scope="col">Email</th>#}
+{#                        <th scope="col">Number</th>#}
+{#                    </tr>#}
+{#                    </thead>#}
+{#                    <tbody>#}
+
+                    <!-- Construct the rest of courses here -->
+
+{##}
+{#                    </tbody>#}
+{#                </table>#}
+
+
+        <!-- A button to open the popup form -->
+{#<button class="open-button" onclick="openForm()">Open Form</button>#}
+
+    <!-- The form -->
+        <div class="form-popup" id="myForm">
+            <div class="form">
+                    <form name="AddRelations" action="" method="post">
+                    <h2>Add your relation</h2>
+
+                     {{ relation.hidden_tag() }}
+                    <label>
+                    <span>
+                        {{ relation.name.label }}
+                    {{ relation.name(size=50)}}
+                    </span>
+                     {%  for relation in relation.name.errors %}
+                        <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </label>
+                    <label>
+                    <span>
+                    {{ relation.email.label }}
+                    {{ relation.email(size=35)}}
+
+                    </span>
+                        {%  for relation in relation.email.errors %}
+                        <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </label>
+
+                    <label>
+                        <span>
+                        {{ relation.number.label }} <br>
+                        {{ relation.number(size=35) }}
+                        </span>
+                                            {%  for error in relation.number.errors %}
+                        <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    </label>
+
+                    <p>
+                        <button type="button" class="submit">{{ relation.submit() }}</button>
+                    </p>
+                            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+
+                    </form>
+    {#      <form action="/action_page.php" class="form-container">#}
+    {#        <h1>Login</h1>#}
+    {##}
+    {#        <label for="email"><b>Email</b></label>#}
+    {#        <input type="text" placeholder="Enter Email" name="email" required>#}
+    {##}
+    {#        <label for="psw"><b>Password</b></label>#}
+    {#        <input type="password" placeholder="Enter Password" name="psw" required>#}
+    {##}
+    {#        <button type="submit" class="btn">Login</button>#}
+    {#        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>#}
+    {#      </form>#}
+            </div>
+    </div>
+{#    <button style="background-image: url('../static/images/plusSign.png') ; background-size: cover; height: 500px;width: 500px ; ">Click me!</button>#}
+
+{#    <input type="image" src="../static/images/plusSign.png" />#}
+
+                        {% else %}
+    Please log in
+                        {% endif %}
+    <script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("card-show").style.display = "none";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+    document.getElementById("card-show").style.display = "block";
+
+
+}
+
+</script>
+{% endblock %}

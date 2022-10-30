@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="register-area" id="welcome">
+
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Welcome</h2>
+            <form name="login" action="" method="post">
+                {{ form.hidden_tag() }}
+                <label>
+                <span>
+                {{ form.email.label }}
+                {{ form.email(size=35)}}
+
+                </span>
+                    {%  for error in form.email.errors %}
+                    <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </label>
+
+                <label>
+                    <span>
+                    {{ form.password.label }} <br>
+                    {{ form.password(size=35) }}
+
+                    </span>
+                                        {%  for error in form.password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </label>
+
+                <p>
+                    <button type="button" class="submit">{{ form.submit() }}</button>
+                </p>
+            </form>
+
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+
+                    <h3>Don't have an account? Please Sign up!</h3>
+                </div>
+                <div class="img__text m--in">
+
+                    <h3>If you already has an account, just sign in.</h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <form name="Register" action="" method="post">
+                <h2>Create your Account</h2>
+
+                 {{ registration.hidden_tag() }}
+                <label>
+                <span>
+                    {{ registration.first_name.label }}
+                {{ registration.first_name(size=50)}}
+                </span>
+                 {%  for registration in registration.first_name.errors %}
+                    <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </label>
+                 <label>
+                <span>
+                    {{ registration.last_name.label }}
+                {{ registration.last_name(size=50)}}
+                </span>
+                 {%  for registration in registration.last_name.errors %}
+                    <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </label>
+                <label>
+                <span>
+                {{ registration.email.label }}
+                {{ registration.email(size=35)}}
+
+                </span>
+                    {%  for registration in registration.email.errors %}
+                    <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </label>
+
+                <label>
+                    <span>
+                    {{ registration.password.label }} <br>
+                    {{ registration.password(size=35) }}
+                    </span>
+                                        {%  for error in registration.password.errors %}
+                    <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </label>
+
+                <p>
+                    <button type="button" class="submit">{{ registration.submit() }}</button>
+                </p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+        </div>
+    <script>
+        document.querySelector('.img__btn').addEventListener('click', function() {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+    </script>
+{% endblock %}

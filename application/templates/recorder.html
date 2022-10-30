@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{%block content %}
+
+        <div class="welcome-area" id="welcome">
+{##}
+{#      <p>#}
+{#        <button id="startRecording" style="color: black ;">Start recording</button>#}
+{#        <button id="stopRecording" disabled style="color: black ;">Stop recording</button>#}
+{#    </p>#}
+{#        {% if  %}#}
+        {% if messageRecorded %}
+            <form>
+                <label for="name">Send To:</label>
+            <select name="name"  id="name" class="form-control">
+         <option value="" selected="selected"></option>
+                    {% for class in classes %}
+          <option value="{{ class.r1["name"] }}">{{ class.r1["name"] }}</option>
+          {% endfor %}
+            </select>
+                        <label for="email">Email:</label>
+
+                <select name="email"  id="email" class="form-control">
+         <option value="" selected="selected"></option>
+                    {% for class in classes %}
+          <option value="{{ class.r1["email"] }}">{{ class.r1["email"] }}</option>
+          {% endfor %}
+            </select>
+                        <label for="number">Number:</label>
+
+                            <select name="number"  id="number" class="form-control">
+         <option value="" selected="selected"></option>
+                    {% for class in classes %}
+          <option value="{{ class.r1["phone_number"] }}">{{ class.r1["phone_number"] }}</option>
+          {% endfor %}
+            </select>
+              <input type="submit" value="Submit">
+
+            </form>
+        {% else %}
+
+          <div class="recorder_wrapper">
+           <div class="recorder">
+            <button class="record_btn" id="button"></button>
+            <p id="msg_box"></p>
+           </div>
+           </div>
+            </div>
+       {%  endif %}
+        <section class="section home-feature">
+        <div class="container">
+            <table>
+  <caption>Voice Notes Scheduled</caption>
+  <thead>
+    <tr>
+      <th>VoiceNote</th>
+      <th>Receiver</th>
+      <th>Date</th>
+      <th>Occasion</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Projeto">Restaurante</td>
+      <td data-label="Descrição">Controle de fluxo de um restaurante</td>
+      <td data-label="Administrador">Erick Jacquin</td>
+      <td data-label="Aplicações">4</td>
+      <td data-label="Criado">20/04/2018</td>
+    </tr>
+    <tr>
+      <td data-label="Projeto">Relatório</td>
+      <td data-label="Descrição">Gerador de relatório online</td>
+      <td data-label="Administrador">Elon Musk</td>
+      <td data-label="Aplicações">2</td>
+      <td data-label="Criado">12/08/2022</td>
+    </tr>
+    <tr>
+      <td data-label="Projeto">Financeiro</td>
+      <td data-label="Descrição">Controle de fluxo financeiro</td>
+      <td data-label="Administrador">Bill Gates</td>
+      <td data-label="Aplicações">6</td>
+      <td data-label="Criado">12/12/2021</td>
+    </tr>
+    <tr>
+      <td data-label="Projeto">Estoque</td>
+      <td data-label="Descrição">Controle de estoque de loja</td>
+      <td data-label="Administrador">Jeff Bezos</td>
+      <td data-label="Aplicações">2</td>
+      <td data-label="Criado">01/01/2000</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+        </section>
+{#    <script>#}
+{#    navigator#}
+{#        .mediaDevices#}
+{#        .getUserMedia({audio: true})#}
+{#        .then(stream => { handlerFunction(stream) });#}
+{##}
+{#    function handlerFunction(stream) {#}
+{#        rec = new MediaRecorder(stream);#}
+{#        rec.ondataavailable = e => {#}
+{#            audioChunks.push(e.data);#}
+{#            if (rec.state == "inactive") {#}
+{#                let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});#}
+{#                sendData(blob);#}
+{#            }#}
+{#        }#}
+{#    }#}
+{##}
+{#    function sendData(data) {#}
+{#        var form = new FormData();#}
+{#        form.append('file', data, 'data.mp3');#}
+{#        form.append('title', 'data.mp3');#}
+{#        //Chrome inspector shows that the post data includes a file and a title.#}
+{#        $.ajax({#}
+{#            type: 'POST',#}
+{#            url: '/save-record',#}
+{#            data: form,#}
+{#            cache: false,#}
+{#            processData: false,#}
+{#            contentType: false#}
+{#        }).done(function(data) {#}
+{#            console.log(data);#}
+{#        });#}
+{#    }#}
+{##}
+{#    startRecording.onclick = e => {#}
+{#        console.log('Recording are started..');#}
+{#        startRecording.disabled = true;#}
+{#        stopRecording.disabled = false;#}
+{#        audioChunks = [];#}
+{#        rec.start();#}
+{#    };#}
+{##}
+{#    stopRecording.onclick = e => {#}
+{#        console.log("Recording are stopped.");#}
+{#        startRecording.disabled = false;#}
+{#        stopRecording.disabled = true;#}
+{#        rec.stop();#}
+{#    };#}
+{#    </script>#}
+{% endblock %}
+
